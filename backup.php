@@ -48,9 +48,6 @@ class Backup extends Module
         $this->author = 'Ivan(1315.ig@gmail.com)';
         $this->need_instance = 0;
 
-        /**
-         * Set $this->bootstrap to true if your module is compliant with bootstrap (PrestaShop 1.6)
-         */
         $this->bootstrap = true;
 
         parent::__construct();
@@ -59,6 +56,7 @@ class Backup extends Module
         $this->description = $this->l('Saving site files and database to an archive for further transfer or storage');
 
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
+        $this->module_key = 'c7c4d7d162d01218cfc641b489433422';
     }
 
     public function install()
