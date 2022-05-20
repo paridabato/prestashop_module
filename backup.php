@@ -61,10 +61,6 @@ class Backup extends Module
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
     }
 
-    /**
-     * Don't forget to create update methods if needed:
-     * http://doc.prestashop.com/display/PS16/Enabling+the+Auto-Update
-     */
     public function install()
     {
         return parent::install();
@@ -72,12 +68,11 @@ class Backup extends Module
 
     public function uninstall()
     {
-        return parent::uninstall();
+        return parent::uninstall()
+            && Tools::deleteDirectory(dirname(_PS_ROOT_DIR_) . '/backup')
+            ;
     }
 
-    /**
-     * Load the configuration form
-     */
     public function getContent()
     {
         $output = '';
@@ -295,9 +290,6 @@ class Backup extends Module
         return $tpl->fetch();
     }
 
-    /**
-     * Create the form that will be displayed in the configuration of your module.
-     */
     protected function renderForm()
     {
         $helper = new HelperForm();
@@ -322,9 +314,6 @@ class Backup extends Module
         return $helper->generateForm(array($this->getConfigForm()));
     }
 
-    /**
-     * Create the structure of your form.
-     */
     protected function getConfigForm()
     {
         return array(
@@ -414,9 +403,6 @@ class Backup extends Module
         );
     }
 
-    /**
-     * Set values for the inputs.
-     */
     protected function getConfigFormValues()
     {
         return array(
@@ -426,9 +412,6 @@ class Backup extends Module
         );
     }
 
-    /**
-     * Save form data.
-     */
     protected function postProcess()
     {
         $form_values = $this->getConfigFormValues();
