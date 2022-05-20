@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>backup</name>
+	<displayName><![CDATA[Saving site files and database]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[Saving site files and database to an archive for further transfer or storage]]></description>
+	<author><![CDATA[Ivan(1315.ig@gmail.com)]]></author>
+	<tab><![CDATA[export]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>
