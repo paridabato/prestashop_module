@@ -67,17 +67,11 @@ class Backup extends Module
      */
     public function install()
     {
-        Configuration::updateValue('BACKUP_LIVE_MODE', false);
-
-        return parent::install() &&
-            $this->registerHook('header') &&
-            $this->registerHook('backOfficeHeader');
+        return parent::install();
     }
 
     public function uninstall()
     {
-        Configuration::deleteByName('BACKUP_LIVE_MODE');
-
         return parent::uninstall();
     }
 
@@ -526,25 +520,5 @@ class Backup extends Module
         }
 
         return $return;
-    }
-
-    /**
-    * Add the CSS & JavaScript files you want to be loaded in the BO.
-    */
-    public function hookBackOfficeHeader()
-    {
-        if (Tools::getValue('module_name') == $this->name) {
-            $this->context->controller->addJS($this->_path.'views/js/back.js');
-            $this->context->controller->addCSS($this->_path.'views/css/back.css');
-        }
-    }
-
-    /**
-     * Add the CSS & JavaScript files you want to be added on the FO.
-     */
-    public function hookHeader()
-    {
-        $this->context->controller->addJS($this->_path.'/views/js/front.js');
-        $this->context->controller->addCSS($this->_path.'/views/css/front.css');
     }
 }
